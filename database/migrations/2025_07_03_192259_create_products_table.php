@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->decimal('prix', 8, 2);
             $table->integer('quantite')->default(0);
+            $table->string('reference');
             $table->timestamps();
         });
     }

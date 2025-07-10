@@ -13,51 +13,48 @@ class ProductController extends Controller
         return view('produits.index', compact('produits'));
     }
 
-    public function create()
-    {
-        return view('produits.create');
-    }
+public function create()
+{
+    return view('produits.create');
+}
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nom' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'prix' => 'required|numeric',
-            'quantite' => 'required|integer',
-        ]);
 
-        Product::create($request->all());
+ public function store(Request $request)
+{
+    $request->validate([
+        'nom' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'prix' => 'required|numeric',
+        'quantite' => 'required|integer',
+        'reference' => 'required|string',
+    ]);
 
-        return redirect('/')->with('success', 'Produit ajouté avec succès');
-    }
+    Product::create($request->all());
 
-    public function edit($id)
-    {
-        $produit = Product::findOrFail($id);
-        return view('produits.edit', compact('produit'));
-    }
+    return redirect()->route('produits.index')->with('success', 'Produit ajouté avec succès');
+}
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nom' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'prix' => 'required|numeric',
-            'quantite' => 'required|integer',
-        ]);
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'nom' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'prix' => 'required|numeric',
+        'quantite' => 'required|integer',
+        'reference' => 'required|string',
+    ]);
 
-        $produit = Product::findOrFail($id);
-        $produit->update($request->all());
+    $produit = Product::findOrFail($id);
+    $produit->update($request->all());
 
-        return redirect('/')->with('success', 'Produit mis à jour');
-    }
+    return redirect()->route('produits.index')->with('success', 'Produit mis à jour');
+}
 
-    public function destroy($id)
-    {
-        $produit = Product::findOrFail($id);
-        $produit->delete();
+public function destroy($id)
+{
+    $produit = Product::findOrFail($id);
+    $produit->delete();
 
-        return redirect('/')->with('success', 'Produit supprimé');
-    }
+    return redirect()->route('produits.index')->with('success', 'Produit supprimé');
+}
 }

@@ -27,6 +27,10 @@
             <label>Quantité</label>
             <input type="number" name="quantite" class="form-control" value="{{ $produit->quantite }}" required>
         </div>
+        <div class="mb-3">
+            <label>Reference</label>
+            <input type="text" name="reference" class="form-control" value="{{ $produit->reference }}" required>
+        </div>
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
         <a href="{{ url('/') }}" class="btn btn-secondary">Annuler</a>
     </form>

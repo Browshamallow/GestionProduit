@@ -22,6 +22,7 @@
             <th>Description</th>
             <th>Prix</th>
             <th>Quantité</th>
+            <th>Reference</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -33,6 +34,8 @@
                 <td>{{ $produit->description }}</td>
                 <td>{{ $produit->prix }}</td>
                 <td>{{ $produit->quantite }}</td>
+                <td>{{ $produit->reference }}</td>
+
                 <td>
                     <a href="{{ url('/produits/'.$produit->id.'/edit') }}" class="btn btn-sm btn-warning">Modifier</a>
                     <form action="{{ url('/produits/'.$produit->id) }}" method="POST" style="display:inline-block;">

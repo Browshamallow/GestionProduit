@@ -26,6 +26,10 @@
             <label>Quantité</label>
             <input type="number" name="quantite" class="form-control" required>
         </div>
+        <div class="mb-3">
+            <label>Reference</label>
+            <input type="text" name="reference" class="form-control" required>
+        </div>
         <button type="submit" class="btn btn-success">Enregistrer</button>
         <a href="{{ url('/') }}" class="btn btn-secondary">Annuler</a>
     </form>
